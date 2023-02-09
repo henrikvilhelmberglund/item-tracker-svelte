@@ -1,71 +1,39 @@
 <script>
-	import { base } from "$app/paths";
-	const contents = [
-		{
-			name: "SvelteKit",
-			link: "https://kit.svelte.dev",
-			desc: "with adapter-static for easier Github Pages deployment",
-		},
-		{
-			name: "UnoCSS",
-			link: "https://github.com/unocss/unocss",
-			desc: "using Svelte scoped mode",
-		},
-		{
-			name: "Prettier Plugin TailwindCSS",
-			link: "https://github.com/tailwindlabs/prettier-plugin-tailwindcss",
-			desc: "for auto sorting of classes",
-		},
-		{
-			name: "Commit-and-Tag-Version",
-			link: "https://github.com/absolute-version/commit-and-tag-version",
-			desc: "for CHANGELOG generation and Github tagging of versions",
-		},
-		{
-			name: "PrismJS",
-			link: "https://prismjs.com",
-			desc: "with Prism-Svelte for syntax highlighting of code blocks",
-		},
-	];
+
+  
+
 </script>
 
-<main class="[&>*]:m-4">
-	<h1 class="text-4xl">Welcome to SvelteKit - UnoCSS template!</h1>
-	<p>
-		Visit <a
-			class="underline-blue-600 underline hover:text-blue-600"
-			href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation for SvelteKit
-	</p>
-	<p>This template includes:</p>
-	<ul>
-		{#each contents as { name, link, desc }}
-			<li class="list-none">
-				<div class="flex flex-col items-start pb-4 font-serif">
-					<a class="underline-blue-600 text-2xl underline hover:text-blue-600" href={link}>
-						{name}
-					</a>
-					<span>{desc}</span>
-				</div>
-			</li>
-		{/each}
-	</ul>
-</main>
+<div class="flex w-64 flex-col">
+	<form class="m-4 [&>*]:m-1" id="create-list">
+		<label for="create-list-name">Create listname</label>
+		<input class="rounded-md rounded-md border p-1 p-1" id="create-list-name" type="text" />
+		<button class="rounded-lg bg-blue-500 p-1 text-white hover:bg-blue-400">Create</button>
+	</form>
+	<hr />
+	<form class="m-4 [&>*]:m-1" id="list-search">
+		<label for="list-name">Listname</label>
+		<input class="rounded-md border p-1" id="list-name" type="text" />
+		<button class="rounded-lg bg-blue-500 p-1 text-white hover:bg-blue-400">Search</button>
+	</form>
+	<ul id="lists" />
+	<hr />
+	<form class="m-4 [&>*]:m-1" id="update-list">
+		<input class="rounded-md border p-1" id="listname" type="text" />
+		<button class="rounded-lg bg-blue-500 p-1 text-white hover:bg-blue-400">Update Name</button>
+	</form>
+	<ul id="item-list" />
+	<hr />
+	<form class="m-4 [&>*]:m-1" id="add-item">
+		<label for="item-title">Title:</label>
+		<input class="rounded-md border p-1" id="item-title" type="text" />
+		<br />
+		<label for="item-desc">Description:</label>
+		<textarea class="rounded-md border p-1" id="item-desc" />
+		<br />
+		<button class="rounded-lg bg-blue-500 p-1 text-white hover:bg-blue-400">Save</button>
+	</form>
+</div>
 
-<footer class="m-4 h-64">
-	<p>
-		by
-		<a
-			class="underline-blue-600 underline hover:text-blue-600"
-			href="https://github.com/henrikvilhelmberglund"
-			><img class="inline w-6" src="Henrik.png" alt="avatar picture" />henrikvilhelmberglund</a>
-	</p>
-	<div>
-		<b />
-		<a
-			class="underline-blue-600 p-12 text-2xl text-2xl underline hover:text-blue-600"
-			href="{base}/important">
-			<span> Important! </span>
-		</a>
-		<strong />
-	</div>
-</footer>
+<style>
+</style>
