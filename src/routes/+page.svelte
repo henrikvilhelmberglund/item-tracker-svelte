@@ -1,5 +1,15 @@
 <script>
 	const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
+	let testObject = {
+		listname: "Henrik's test list",
+		itemList: {
+			listName: "my user's list",
+			shoppingItems: [
+				{ name: "banana", amount: 5, done: true },
+				{ name: "cow", amount: 3, done: false },
+			],
+		},
+	};
 
   
 
