@@ -30,6 +30,11 @@
 		const { list } = await res.json();
 		currentList = list._id;
 	}
+	$: lists = "";
+	let items;
+	let searchListValue;
+	let createListValue;
+	let currentList;
 </script>
 
 <div class="flex w-64 flex-col">
