@@ -39,10 +39,35 @@
 		const { list } = await res.json();
 		currentList = list._id;
 	}
+	async function addItem(inputlist) {
+		currentList = "63e51467725e914d6005b761";
+		if (!currentList) {
+			return alert("Choose a list");
+		}
+
+		if (!itemTitleField || !itemDescField) {
+			return alert("Fill text boxes");
+		}
+
+		const res = await fetch(`${API_BASE}lists/${currentList}/items`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				title: itemTitleField,
+				description: itemDescField,
+			}),
+		});
+		// const { list } = await res.json();
+	}
+
 	$: lists = "";
 	let items;
 	let searchListValue;
 	let createListValue;
+	let itemTitleField;
+	let itemDescField;
 	let currentList;
 </script>
 
@@ -73,33 +98,33 @@
 	</form>
 	<ul id="item-list" />
 	<hr />
-	<form class="m-4 [&>*]:m-1" id="add-item">
+	<form on:submit={() => addItem()} class="m-4 [&>*]:m-1" id="add-item">
 		<label for="item-title">Title:</label>
-		<input class="rounded-md border p-1" id="item-title" type="text" />
+		<input bind:value={itemTitleField} class="rounded-md border p-1" id="item-title" type="text" />
 		<br />
 		<label for="item-desc">Description:</label>
-		<textarea class="rounded-md border p-1" id="item-desc" />
+		<textarea bind:value={itemDescField} class="rounded-md border p-1" id="item-desc" />
 		<br />
 		<button class="rounded-lg bg-blue-500 p-1 text-white hover:bg-blue-400">Save</button>
 	</form>
 </div>
 
-	<div>
-		{#each Object.entries(lists) || [] as [keys, list]}
-			<div class="m-4  rounded-xl bg-slate-300 p-2">
-				<p>_id: {list._id}</p>
-				<p>List name: {list.listname}</p>
-				<ul class="m-8">
-					{#each list.itemList || [] as item}
-						<li class="m-2 rounded-xl bg-slate-200 p-2">
-							<h4>Title: {item.title}</h4>
-							<p>Desc: {item.description}{item.checked ? "✅" : ""}</p>
-						</li>
-					{/each}
-				</ul>
-			</div>
-		{/each}
-	</div>
+<div>
+	{#each Object.entries(lists) || [] as [keys, list]}
+		<div class="m-4  rounded-xl bg-slate-300 p-2">
+			<p>_id: {list._id}</p>
+			<p>List name: {list.listname}</p>
+			<ul class="m-8">
+				{#each list.itemList || [] as item}
+					<li class="m-2 rounded-xl bg-slate-200 p-2">
+						<h4>Title: {item.title}</h4>
+						<p>Desc: {item.description}{item.checked ? "✅" : ""}</p>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	{/each}
+</div>
 
 <style>
 </style>
