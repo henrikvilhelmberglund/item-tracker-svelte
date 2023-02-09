@@ -18,8 +18,18 @@
 		return data;
 	}
 
-  
+	async function createList(inputlist) {
+		const res = await fetch(`${API_BASE}lists`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(testObject),
+		});
 
+		const { list } = await res.json();
+		currentList = list._id;
+	}
 </script>
 
 <div class="flex w-64 flex-col">
