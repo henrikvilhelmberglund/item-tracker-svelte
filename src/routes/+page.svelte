@@ -38,9 +38,13 @@
 </script>
 
 <div class="flex w-64 flex-col">
-	<form class="m-4 [&>*]:m-1" id="create-list">
+	<form on:submit={async () => (lists = await createList())} class="m-4 [&>*]:m-1" id="create-list">
 		<label for="create-list-name">Create listname</label>
-		<input class="rounded-md rounded-md border p-1 p-1" id="create-list-name" type="text" />
+		<input
+			bind:value={createListValue}
+			class="rounded-md rounded-md border p-1 p-1"
+			id="create-list-name"
+			type="text" />
 		<button class="rounded-lg bg-blue-500 p-1 text-white hover:bg-blue-400">Create</button>
 	</form>
 	<hr />
