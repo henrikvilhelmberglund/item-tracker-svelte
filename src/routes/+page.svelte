@@ -75,5 +75,22 @@
 	</form>
 </div>
 
+	<div>
+		{#each Object.entries(lists) || [] as [keys, list]}
+			<div class="m-4  rounded-xl bg-slate-300 p-2">
+				<p>_id: {list._id}</p>
+				<p>List name: {list.listname}</p>
+				<ul class="m-8">
+					{#each list.itemList || [] as item}
+						<li class="m-2 rounded-xl bg-slate-200 p-2">
+							<h4>Title: {item.title}</h4>
+							<p>Desc: {item.description}{item.checked ? "✅" : ""}</p>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		{/each}
+	</div>
+
 <style>
 </style>
