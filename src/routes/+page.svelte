@@ -1,4 +1,5 @@
 <script>
+	const API_BASE = "https://nackademin-item-tracker.herokuapp.com/";
 
   
 
