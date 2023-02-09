@@ -48,9 +48,12 @@
 		<button class="rounded-lg bg-blue-500 p-1 text-white hover:bg-blue-400">Create</button>
 	</form>
 	<hr />
-	<form class="m-4 [&>*]:m-1" id="list-search">
+	<form
+		on:submit={async () => (lists = await searchList(searchListValue))}
+		class="m-4 [&>*]:m-1"
+		id="list-search">
 		<label for="list-name">Listname</label>
-		<input class="rounded-md border p-1" id="list-name" type="text" />
+		<input bind:value={searchListValue} class="rounded-md border p-1" id="list-name" type="text" />
 		<button class="rounded-lg bg-blue-500 p-1 text-white hover:bg-blue-400">Search</button>
 	</form>
 	<ul id="lists" />
