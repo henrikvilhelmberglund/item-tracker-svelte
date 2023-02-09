@@ -10,6 +10,13 @@
 			],
 		},
 	};
+	async function searchList(inputlist) {
+		const query = inputlist;
+		const res = await fetch(`${API_BASE}listsearch?listname=${query}`);
+		const data = await res.json();
+		console.log(data);
+		return data;
+	}
 
   
 
