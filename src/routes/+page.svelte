@@ -72,7 +72,7 @@
 </script>
 
 <div class="flex w-64 flex-col">
-	<form on:submit={async () => (lists = await createList())} class="m-4 [&>*]:m-1" id="create-list">
+	<form on:submit={async () => (await createList())} class="m-4 [&>*]:m-1" id="create-list">
 		<label for="create-list-name">Create listname</label>
 		<input
 			bind:value={createListValue}
